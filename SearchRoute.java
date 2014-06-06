@@ -4,6 +4,9 @@ public class SearchRoute{
   int data[][]; //格子状の距離データ
   String station[]; //駅名
   String goal,start;
+  int startNumber,goalNumber;
+  int minCost;
+  String minRoute;
   public SearchRoute(String args[]){
     BufferedReader br, input;
     FileReader fr;
@@ -30,6 +33,12 @@ public class SearchRoute{
         String str = br.readLine(); //1行読込み
         if(row < n){
           station[row] = str;
+          if(start.equals(station[row])){
+            startNumber = row;
+          }
+          if(goal.equals(station[row])){
+            goalNumber = row;
+          }
           // System.out.println(station[row]);
         }else{
           String[]tmp = str.split(" ");
@@ -43,11 +52,26 @@ public class SearchRoute{
     }catch(IOException e){
       e.printStackTrace();
     }
-    station();
+    station("", startNumber,0);
   }
 
-  void station(){
-    System.out.println(start);
+  void station(String route, int stationNumber, int cost){
+    // if(from == goal){
+    //   if(cost < minCost){
+    //     minCost = cost;
+    //     minRoute = route;
+    //   }
+    //   int j;
+    //   switch(from){
+    //     for(j==0;j<n;j++){
+    //       case station[j];
+    //     }
+    //   }
+
+    // }
+    System.out.println(stationNumber);
+    System.out.println(goalNumber);
+
     //ここにかく
   }
 
