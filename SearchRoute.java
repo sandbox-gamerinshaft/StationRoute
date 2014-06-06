@@ -18,20 +18,15 @@ public class SearchRoute{
       br = new BufferedReader(fr);
       String str = br.readLine(); //1行読込み
       System.out.println(str); //とりあえず確認の為の出力
-      // InputStreamReader is = new InputStreamReader(System.in);       //（１）
-      // BufferedReader br = new BufferedReader(is);                    //（２）
-      // System.out.println("何か入力してください.");
-      // String str = br.readLine();                                    //（３）
-      // System.out.println(str + "が入力されました.");
     }catch(IOException e){
       e.printStackTrace();
     }
 
   }
 
-  // void station(){
-  //   //ここにかく
-  // }
+  void station(){
+    //ここにかく
+  }
 
   public static void main(String args[]){
     new SearchRoute(args);
