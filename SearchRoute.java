@@ -3,8 +3,9 @@ import java.util.regex.*;
 public class SearchRoute{
   int data[][]; //格子状の距離データ
   String station[]; //駅名
+  String goal,start;
   public SearchRoute(String args[]){
-    BufferedReader br;
+    BufferedReader br, input;
     FileReader fr;
     int n;
     int row = 0;
@@ -12,17 +13,29 @@ public class SearchRoute{
     data = new int[n][n]; // n × n の距離を格納する二次元配列を作成
     station = new String[n]; // n個の駅名を格納する文字列配列を作成
     try{
+      System.out.println("To?");
+      input = new BufferedReader (new InputStreamReader (System.in));
+      start = input.readLine( );
+      System.out.println("入力された駅名は「" + start + "」です。");
+      System.out.println("From?");
+      input = new BufferedReader (new InputStreamReader (System.in));
+      goal = input.readLine( );
+      System.out.println("入力された駅名は「" + goal + "」です。");
       //0.59s br = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
-       fr = new FileReader(args[0]); //0.57s
-       br = new BufferedReader(fr);
-      //0.63s while (br.readLine() != null) {
-
-      while (br.read() != -1 ) { //0.59s
+      fr = new FileReader(args[0]); //0.57s
+      br = new BufferedReader(fr);
+      while (br.ready()) {
         String str = br.readLine(); //1行読込み
         if(row < n){
           station[row] = str;
+          System.out.println(station[row]);
+        }else{
+          String[]tmp = str.split(" ");
+          for(int i=0; i<n; i++){
+            data[row-n][i] = Integer.parseInt(tmp[i]);
+            System.out.println(data[row-n][i]);
+           }
         }
-        System.out.println(str); //とりあえず確認の為の出力
         row++;
       }
     }catch(IOException e){
